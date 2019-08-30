@@ -20,7 +20,7 @@ var cookieParser = require('cookie-parser'); // the session is stored in a cooki
 app.use(cookieParser());
 
 app.use(expressSession({
-    secret: 'Pix.City_session',
+    secret: 'BrazilPay_session',
     resave: false,
     saveUninitialized: true
 }));
@@ -31,7 +31,7 @@ app.use(cors());
 
 app.get('/', function(req, res) {
 
-    res.send("This API server is developed for Pix.City");
+    res.send("This API server is developed for BrazilPay");
 })
 
 //API handlers

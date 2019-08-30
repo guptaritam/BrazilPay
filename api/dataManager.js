@@ -23,50 +23,15 @@ var dataManagerContractABI = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_email",
+				"name": "_userName",
+				"type": "string"
+			},
+			{
+				"name": "_userDataJson",
 				"type": "string"
 			}
 		],
-		"name": "getCityMaker",
-		"outputs": [
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_postId",
-				"type": "string"
-			},
-			{
-				"name": "_cityMakerEmail",
-				"type": "string"
-			},
-			{
-				"name": "_URL",
-				"type": "string"
-			},
-			{
-				"name": "_postContent",
-				"type": "string"
-			},
-			{
-				"name": "_hashtags",
-				"type": "string"
-			}
-		],
-		"name": "addPost",
+		"name": "addUser",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -76,32 +41,44 @@ var dataManagerContractABI = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_postId",
+				"name": "_amountToIncrease",
+				"type": "uint256"
+			}
+		],
+		"name": "increaseTotalSupply",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_withdrawerUserName",
 				"type": "string"
 			},
 			{
-				"name": "_selfEmail",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "approveWithdrawOrder",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_userName",
 				"type": "string"
 			}
 		],
-		"name": "getPost",
+		"name": "getUserAddress",
 		"outputs": [
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
 			{
 				"name": "",
 				"type": "string"
@@ -115,11 +92,11 @@ var dataManagerContractABI = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_email",
+				"name": "_userName",
 				"type": "string"
 			}
 		],
-		"name": "getNoOfPosts",
+		"name": "getUserWalletBalance",
 		"outputs": [
 			{
 				"name": "",
@@ -134,23 +111,42 @@ var dataManagerContractABI = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_postId",
-				"type": "string"
-			},
-			{
-				"name": "_URL",
-				"type": "string"
-			},
-			{
-				"name": "_postContent",
-				"type": "string"
-			},
-			{
-				"name": "_hashtags",
+				"name": "_userName",
 				"type": "string"
 			}
 		],
-		"name": "updatePost",
+		"name": "getUserData",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_receiverUserName",
+				"type": "string"
+			},
+			{
+				"name": "_senderUserName",
+				"type": "string"
+			},
+			{
+				"name": "_amount",
+				"type": "uint256"
+			},
+			{
+				"name": "_remarks",
+				"type": "string"
+			}
+		],
+		"name": "sendTokens",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -160,11 +156,11 @@ var dataManagerContractABI = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_postId",
-				"type": "string"
+				"name": "_amountToDecrease",
+				"type": "uint256"
 			}
 		],
-		"name": "validatePost",
+		"name": "decreaseTotalSupply",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -174,19 +170,47 @@ var dataManagerContractABI = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_selfEmail",
+				"name": "_receiverUserName",
 				"type": "string"
 			},
 			{
-				"name": "_emailToWhitelist",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "approveBuyOrder",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "getTotalTokensSold",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_userName",
 				"type": "string"
 			},
 			{
-				"name": "_postId",
+				"name": "_userAddress",
 				"type": "string"
 			}
 		],
-		"name": "whitelistEmailForPost",
+		"name": "mapUserAddress",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -196,16 +220,30 @@ var dataManagerContractABI = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_email",
+				"name": "_userName",
 				"type": "string"
 			},
 			{
-				"name": "_cityMakerData",
+				"name": "_userDataJson",
 				"type": "string"
 			}
 		],
-		"name": "updateCityMaker",
+		"name": "updateUserData",
 		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "getAvailableTotalSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -214,19 +252,40 @@ var dataManagerContractABI = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_email",
-				"type": "string"
-			},
-			{
-				"name": "_cityMakerData",
+				"name": "_userName",
 				"type": "string"
 			}
 		],
-		"name": "addCityMaker",
+		"name": "getUserTotalTransfers",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_totalSupply",
+				"type": "uint256"
+			}
+		],
+		"name": "setTotalSupply",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
 	},
 	{
 		"anonymous": false,
@@ -238,18 +297,28 @@ var dataManagerContractABI = [
 			},
 			{
 				"indexed": false,
-				"name": "_email",
+				"name": "_userName",
 				"type": "string"
 			},
 			{
 				"indexed": false,
-				"name": "_cityMakerData",
+				"name": "_userAddress",
 				"type": "string"
 			},
 			{
 				"indexed": false,
-				"name": "_noOfPosts",
+				"name": "_walletBalance",
 				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_totalTransfers",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_userDataJson",
+				"type": "string"
 			},
 			{
 				"indexed": false,
@@ -257,7 +326,7 @@ var dataManagerContractABI = [
 				"type": "uint256"
 			}
 		],
-		"name": "CityMakerEvent",
+		"name": "UserEvent",
 		"type": "event"
 	},
 	{
@@ -270,27 +339,22 @@ var dataManagerContractABI = [
 			},
 			{
 				"indexed": false,
-				"name": "_cityMakerEmail",
+				"name": "_senderUserName",
 				"type": "string"
 			},
 			{
 				"indexed": false,
-				"name": "_URL",
+				"name": "_receiverUserName",
 				"type": "string"
 			},
 			{
 				"indexed": false,
-				"name": "_postContent",
-				"type": "string"
+				"name": "_amount",
+				"type": "uint256"
 			},
 			{
 				"indexed": false,
-				"name": "_hashtags",
-				"type": "string"
-			},
-			{
-				"indexed": false,
-				"name": "status",
+				"name": "_remarks",
 				"type": "string"
 			},
 			{
@@ -299,7 +363,34 @@ var dataManagerContractABI = [
 				"type": "uint256"
 			}
 		],
-		"name": "PostEvent",
+		"name": "TransferEvent",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_actionPerformed",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "_userName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "_amount",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "BuyAndWithdrawEvent",
 		"type": "event"
 	}
 ];
@@ -309,18 +400,16 @@ var dataManagerContract = web3.eth.contract(dataManagerContractABI).at(dataManag
 
 dataManagerApiRoutes.get('/', function(req, res) {
 
-    res.send("Pix.City API server");
+    res.send("BrazilPay API server");
 
 });
 
-dataManagerApiRoutes.post('/whitelistEmailForPost', function(req, res) {
+dataManagerApiRoutes.post('/set/totalSupply', function(req, res) {
 
-    var selfEmail = req.body._selfEmail;
-    var emailToWhitelist = req.body._emailToWhitelist;
-    var postId = req.body._postId;
+    var totalSupply = req.body._totalSupply;
 
 
-    dataManagerContract.whitelistEmailForPost.sendTransaction(selfEmail, emailToWhitelist, postId, {
+    dataManagerContract.setTotalSupply.sendTransaction(totalSupply, {
         from: web3.eth.defaultAccount,
         gas: 6000000
     }, function(err, result) {
@@ -334,14 +423,51 @@ dataManagerApiRoutes.post('/whitelistEmailForPost', function(req, res) {
     });
 });
 
-dataManagerApiRoutes.post('/addCityMaker', function(req, res) {
+dataManagerApiRoutes.post('/increase/totalSupply', function(req, res) {
 
-    var email = req.body._email;
-    var cityMakerData = req.body._cityMakerData;
-    //console.log(JSON.stringify(patientData));
+    var amountToIncrease = req.body._amountToIncrease;
 
 
-    dataManagerContract.addCityMaker.sendTransaction(email, JSON.stringify(cityMakerData), {
+    dataManagerContract.increaseTotalSupply.sendTransaction(amountToIncrease, {
+        from: web3.eth.defaultAccount,
+        gas: 6000000
+    }, function(err, result) {
+        console.log(result);
+        if (!err) {
+
+            //console.log(response);
+            res.json(result);
+        } else
+            res.status(401).json("Error" + err);
+    });
+});
+
+dataManagerApiRoutes.post('/decrease/totalSupply', function(req, res) {
+
+    var amountToDecrease = req.body._amountToDecrease;
+
+
+    dataManagerContract.decreaseTotalSupply.sendTransaction(amountToDecrease, {
+        from: web3.eth.defaultAccount,
+        gas: 6000000
+    }, function(err, result) {
+        console.log(result);
+        if (!err) {
+
+            //console.log(response);
+            res.json(result);
+        } else
+            res.status(401).json("Error" + err);
+    });
+});
+
+dataManagerApiRoutes.post('/add/user', function(req, res) {
+
+    var userName = req.body._userName;
+    var userDataJson = req.body._userDataJson;
+
+
+    dataManagerContract.addUser.sendTransaction(userName, JSON.stringify(userDataJson), {
         from: web3.eth.defaultAccount,
         gas: 6000000
     }, function(err, result) {
@@ -356,14 +482,13 @@ dataManagerApiRoutes.post('/addCityMaker', function(req, res) {
 });
 
 
-dataManagerApiRoutes.post('/updateCityMaker', function(req, res) {
+dataManagerApiRoutes.post('/update/userData', function(req, res) {
 
-    var email = req.body._email;
-    var cityMakerData = req.body._cityMakerData;
-    //console.log(JSON.stringify(patientData));
+    var userName = req.body._userName;
+    var userDataJson = req.body._userDataJson;
 
 
-    dataManagerContract.updateCityMaker.sendTransaction(email, JSON.stringify(cityMakerData), {
+    dataManagerContract.updateUserData.sendTransaction(userName, JSON.stringify(userDataJson), {
         from: web3.eth.defaultAccount,
         gas: 6000000
     }, function(err, result) {
@@ -378,18 +503,17 @@ dataManagerApiRoutes.post('/updateCityMaker', function(req, res) {
 });
 
 
-dataManagerApiRoutes.post('/getCityMaker', function(req, res) {
+dataManagerApiRoutes.post('/get/userData', function(req, res) {
 
-    var email = req.body._email;
+    var userName = req.body._userName;
 
-    dataManagerContract.getCityMaker.call(email, function(err, result) {
+    dataManagerContract.getUserData.call(userName, function(err, result) {
         //console.log(result);
         if (!err) {
 
             //console.log(response);
             res.json({
-                "cityMakerData" : JSON.parse(result[0]),
-                "noOfPosts" : result[1]
+                "userDataJson" : JSON.parse(result)
             });
             // res.json(JSON.parse(result));
         } else
@@ -398,230 +522,272 @@ dataManagerApiRoutes.post('/getCityMaker', function(req, res) {
 
 })
 
+dataManagerApiRoutes.post('/map/userAddress', function(req, res) {
 
-dataManagerApiRoutes.post('/getNoOfPosts', function(req, res) {
+    var userName = req.body._userName;
+    var userAddress = req.body._userAddress;
 
-    var email = req.body._email;
 
-    dataManagerContract.getNoOfPosts.call(email, function(err, result) {
+    dataManagerContract.mapUserAddress.sendTransaction(userName, userAddress, {
+        from: web3.eth.defaultAccount,
+        gas: 6000000
+    }, function(err, result) {
+        console.log(result);
+        if (!err) {
+
+            //console.log(response);
+            res.json(result);
+        } else
+            res.status(401).json("Error" + err);
+    });
+});
+
+dataManagerApiRoutes.post('/sendTokens', function(req, res) {
+
+    var receiverUserName = req.body._receiverUserName;
+    var senderUserName = req.body._senderUserName;
+    var amount = req.body._amount;
+    var remarks = req.body._remarks;
+
+
+    dataManagerContract.sendTokens.sendTransaction(receiverUserName, senderUserName, amount, remarks, {
+        from: web3.eth.defaultAccount,
+        gas: 6000000
+    }, function(err, result) {
+        console.log(result);
+        if (!err) {
+
+            //console.log(response);
+            res.json(result);
+        } else
+            res.status(401).json("Error" + err);
+    });
+});
+
+dataManagerApiRoutes.post('/approve/withdrawOrder', function(req, res) {
+
+    var withdrawerUserName = req.body._withdrawerUserName;
+    var amount = req.body._amount;
+
+
+    dataManagerContract.approveWithdrawOrder.sendTransaction(withdrawerUserName, amount, {
+        from: web3.eth.defaultAccount,
+        gas: 6000000
+    }, function(err, result) {
+        console.log(result);
+        if (!err) {
+
+            //console.log(response);
+            res.json(result);
+        } else
+            res.status(401).json("Error" + err);
+    });
+});
+
+dataManagerApiRoutes.post('/approve/buyOrder', function(req, res) {
+
+    var receiverUserName = req.body._receiverUserName;
+    var amount = req.body._amount;
+
+
+    dataManagerContract.approveBuyOrder.sendTransaction(receiverUserName, amount, {
+        from: web3.eth.defaultAccount,
+        gas: 6000000
+    }, function(err, result) {
+        console.log(result);
+        if (!err) {
+
+            //console.log(response);
+            res.json(result);
+        } else
+            res.status(401).json("Error" + err);
+    });
+});
+
+dataManagerApiRoutes.post('/get/userAddress', function(req, res) {
+
+    var userName = req.body._userName;
+
+    dataManagerContract.getUserAddress.call(userName, function(err, result) {
         //console.log(result);
         if (!err) {
 
             //console.log(response);
-            
-            res.json(result);
-        } else
-            res.status(401).json("Error" + err);
-    });
-
-})
-
-dataManagerApiRoutes.post('/addPost', function(req, res) {
-
-    var postId = req.body._postId;
-    var cityMakerEmail = req.body._cityMakerEmail;
-    var URL = req.body._URL;
-    var postContent = req.body._postContent;
-    var hashtags = req.body._hashtags;
-
-
-    dataManagerContract.addPost.sendTransaction(postId, cityMakerEmail, URL, JSON.stringify(postContent), hashtags, {
-        from: web3.eth.defaultAccount,
-        gas: 6000000
-    }, function(err, result) {
-        console.log(result);
-        if (!err) {
-
-            //console.log(response);
-            res.json(result);
-        } else
-            res.status(401).json("Error" + err);
-    });
-});
-
-
-dataManagerApiRoutes.post('/updatePost', function(req, res) {
-
-    var postId = req.body._postId;
-    var URL = req.body._URL;
-    var postContent = req.body._postContent;
-    var hashtags = req.body._hashtags;
-
-
-    dataManagerContract.updatePost.sendTransaction(postId, URL, JSON.stringify(postContent), hashtags, {
-        from: web3.eth.defaultAccount,
-        gas: 6000000
-    }, function(err, result) {
-        console.log(result);
-        if (!err) {
-
-            //console.log(response);
-            res.json(result);
-        } else
-            res.status(401).json("Error" + err);
-    });
-});
-
-
-
-dataManagerApiRoutes.post('/getPost', function(req, res) {
-
-    var postId = req.body._postId;
-    var selfEmail = req.body._selfEmail;
-
-    dataManagerContract.getPost.call(postId, selfEmail, function(err, result) {
-        console.log(result);
-        if (!err) {
-
             res.json({
-                "cityMakerEmail" : result[0],
-                "URL" : result[1],
-                "postContent" : JSON.parse(result[2]),
-                "hashtags" : result[3],
-                "status" : result[4]
+                "userAddress" : result
             });
-            //res.json(JSON.parse(result));
+            // res.json(JSON.parse(result));
         } else
             res.status(401).json("Error" + err);
     });
 
 })
 
+dataManagerApiRoutes.post('/get/userWalletBalance', function(req, res) {
 
-dataManagerApiRoutes.post('/validatePost', function(req, res) {
+    var userName = req.body._userName;
 
-    var postId = req.body._postId;
+    dataManagerContract.getUserWalletBalance.call(userName, function(err, result) {
+        //console.log(result);
+        if (!err) {
 
+            //console.log(response);
+            res.json({
+                "walletBalance" : result
+            });
+            // res.json(JSON.parse(result));
+        } else
+            res.status(401).json("Error" + err);
+    });
 
-    dataManagerContract.validatePost.sendTransaction(postId, {
-        from: web3.eth.defaultAccount,
-        gas: 6000000
-    }, function(err, result) {
-        console.log(result);
+})
+
+dataManagerApiRoutes.post('/get/userTotalTransfers', function(req, res) {
+
+    var userName = req.body._userName;
+
+    dataManagerContract.getUserTotalTransfers.call(userName, function(err, result) {
+        //console.log(result);
+        if (!err) {
+
+            //console.log(response);
+            res.json({
+                "userTotalTransfers" : result
+            });
+            // res.json(JSON.parse(result));
+        } else
+            res.status(401).json("Error" + err);
+    });
+
+})
+
+dataManagerApiRoutes.post('/get/remainingSupply', function(req, res) {
+
+    dataManagerContract.getAvailableTotalSupply.call(function(err, result) {
+        //console.log(result);
+        if (!err) {
+
+            //console.log(response);
+            res.json({
+                "remainingSupply" : result
+            });
+        } else
+            res.status(401).json("Error" + err);
+    });
+
+})
+
+dataManagerApiRoutes.post('/get/totalTokensSold', function(req, res) {
+
+    dataManagerContract.getTotalTokensSold.call(function(err, result) {
+        //console.log(result);
+        if (!err) {
+
+            //console.log(response);
+            res.json({
+                "totalTokensSold" : result
+            });
+            // res.json(JSON.parse(result));
+        } else
+            res.status(401).json("Error" + err);
+    });
+
+})
+
+dataManagerApiRoutes.get('/get/userLogs', function(req, res) {
+
+    var userEvent = dataManagerContract.UserEvent({
+        from: web3.eth.defaultAccount
+    }, {
+        fromBlock: 0,
+        toBlock: 'latest'
+    });
+
+    userEvent.get(function(err, result) {
+        //console.log(result);
         if (!err) {
 
             //console.log(response);
             res.json(result);
         } else
-            res.status(401).json("Error" + err);
+            return res.json("Error" + err);
     });
+
+})
+
+dataManagerApiRoutes.get('/get/transferLogs', function(req, res) {
+
+    var transferEvent = dataManagerContract.TransferEvent({
+        from: web3.eth.defaultAccount
+    }, {
+        fromBlock: 0,
+        toBlock: 'latest'
+    });
+
+    transferEvent.get(function(err, result) {
+        //console.log(result);
+        if (!err) {
+
+            //console.log(response);
+            res.json(result);
+        } else
+            return res.json("Error" + err);
+    });
+
+})
+
+dataManagerApiRoutes.get('/get/buyAndWithdrawLogs', function(req, res) {
+
+    var buyAndWithdrawEvent = dataManagerContract.BuyAndWithdrawEvent({
+        from: web3.eth.defaultAccount
+    }, {
+        fromBlock: 0,
+        toBlock: 'latest'
+    });
+
+    buyAndWithdrawEvent.get(function(err, result) {
+        //console.log(result);
+        if (!err) {
+
+            //console.log(response);
+            res.json(result);
+        } else
+            return res.json("Error" + err);
+    });
+
+})
+
+dataManagerApiRoutes.post('/generate/userAddress', function(req, res) {
+
+
+    var options = { method: 'POST',
+  url: 'http://localhost:8545',
+  headers: 
+   { 'Postman-Token': 'd68c75a7-85d4-446b-8b15-0eade6b5e3ad',
+     'cache-control': 'no-cache',
+     'Content-Type': 'application/json' },
+  body: 
+   { id: '1',
+     jsonrpc: '2.0',
+     method: 'personal_newAccount',
+     params: [ req.body._password ] },
+  json: true };
+
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+
+  //console.log(body);
+  res.json({"userAddress" : body.result});
+  // res.json({
+  //               "token" : result
+  //           });
+});
+	//res.send(body);
 });
 
-// dataManagerApiRoutes.get('/get/patients', function(req, res) {
-
-//     var patientEvent = dataManagerContract.PatientEvent({
-//         from: web3.eth.defaultAccount
-//     }, {
-//         fromBlock: 0,
-//         toBlock: 'latest'
-//     });
-
-//     patientEvent.get(function(err, result) {
-//         //console.log(result);
-//         if (!err) {
-
-//             //console.log(response);
-//             //res.json(result);
-//             var arrayLength = result.length;
-//             console.log(arrayLength)
-//             var processedArray = [];
-//             for (var i = 0; i < arrayLength; i++) {
-//             	processedArray.push(
-
-//                         {
-
-//                             "blockNumber": result[i].blockNumber,
-//                             "event": result[i].event,
-//                             "transactionHash": result[i].transactionHash,
-//                             "actionPerformed": result[i].args._actionPerformed,
-//                             "email": result[i].args._email,
-//                             "walletBalance": result[i].args._walletBalance,
-//                             "timestamp" : result[i].args._timestamp
-//                         }
-
-//                     )
-
-//             }
-//             res.json(processedArray);
-//         } else
-//             return res.json("Error" + err);
-//     });
-
-// })
-
-dataManagerApiRoutes.get('/getCityMakerLogs', function(req, res) {
-
-    var cityMakerEvent = dataManagerContract.CityMakerEvent({
-        from: web3.eth.defaultAccount
-    }, {
-        fromBlock: 0,
-        toBlock: 'latest'
-    });
-
-    cityMakerEvent.get(function(err, result) {
-        //console.log(result);
-        if (!err) {
-
-            //console.log(response);
-            res.json(result);
-        } else
-            return res.json("Error" + err);
-    });
-
-})
-
-dataManagerApiRoutes.get('/getPostLogs', function(req, res) {
-
-    var postEvent = dataManagerContract.PostEvent({
-        from: web3.eth.defaultAccount
-    }, {
-        fromBlock: 0,
-        toBlock: 'latest'
-    });
-
-    postEvent.get(function(err, result) {
-        //console.log(result);
-        if (!err) {
-
-            //console.log(response);
-            res.json(result);
-        } else
-            return res.json("Error" + err);
-    });
-
-})
-
-// dataManagerApiRoutes.post('/generate/token/patient', function(req, res) {
 
 
-//     var options = { method: 'POST',
-//   url: 'http://localhost:8545',
-//   headers: 
-//    { 'Postman-Token': 'd68c75a7-85d4-446b-8b15-0eade6b5e3ad',
-//      'cache-control': 'no-cache',
-//      'Content-Type': 'application/json' },
-//   body: 
-//    { id: '1',
-//      jsonrpc: '2.0',
-//      method: 'personal_newAccount',
-//      params: [ req.body._password ] },
-//   json: true };
-
-// request(options, function (error, response, body) {
-//   if (error) throw new Error(error);
-
-//   //console.log(body);
-//   res.json({"patientToken" : body.result});
-//   // res.json({
-//   //               "token" : result
-//   //           });
-// });
-// 	//res.send(body);
-// });
-
-
-
-dataManagerApiRoutes.post('/getTransactionDetails', function(req, res) {
+dataManagerApiRoutes.post('/get/transactionDetails', function(req, res) {
 
 
     var options = { method: 'POST',
