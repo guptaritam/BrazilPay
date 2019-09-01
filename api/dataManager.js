@@ -41,11 +41,15 @@ var dataManagerContractABI = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_amountToIncrease",
+				"name": "_receiverUserName",
+				"type": "string"
+			},
+			{
+				"name": "_amount",
 				"type": "uint256"
 			}
 		],
-		"name": "increaseTotalSupply",
+		"name": "approveBuyOrder",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -65,6 +69,62 @@ var dataManagerContractABI = [
 		],
 		"name": "approveWithdrawOrder",
 		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_amountToDecrease",
+				"type": "uint256"
+			}
+		],
+		"name": "decreaseTotalSupply",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "getAvailableTotalSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "getLifetimeTotalSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "getTotalTokensSold",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -96,7 +156,26 @@ var dataManagerContractABI = [
 				"type": "string"
 			}
 		],
-		"name": "getUserWalletBalance",
+		"name": "getUserData",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_userName",
+				"type": "string"
+			}
+		],
+		"name": "getUserTotalTransfers",
 		"outputs": [
 			{
 				"name": "",
@@ -115,13 +194,45 @@ var dataManagerContractABI = [
 				"type": "string"
 			}
 		],
-		"name": "getUserData",
+		"name": "getUserWalletBalance",
 		"outputs": [
 			{
 				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_amountToIncrease",
+				"type": "uint256"
+			}
+		],
+		"name": "increaseTotalSupply",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_userName",
+				"type": "string"
+			},
+			{
+				"name": "_userAddress",
 				"type": "string"
 			}
 		],
+		"name": "mapUserAddress",
+		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -156,61 +267,11 @@ var dataManagerContractABI = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_amountToDecrease",
+				"name": "_totalSupply",
 				"type": "uint256"
 			}
 		],
-		"name": "decreaseTotalSupply",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_receiverUserName",
-				"type": "string"
-			},
-			{
-				"name": "_amount",
-				"type": "uint256"
-			}
-		],
-		"name": "approveBuyOrder",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "getTotalTokensSold",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_userName",
-				"type": "string"
-			},
-			{
-				"name": "_userAddress",
-				"type": "string"
-			}
-		],
-		"name": "mapUserAddress",
+		"name": "setTotalSupply",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -229,53 +290,6 @@ var dataManagerContractABI = [
 			}
 		],
 		"name": "updateUserData",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "getAvailableTotalSupply",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_userName",
-				"type": "string"
-			}
-		],
-		"name": "getUserTotalTransfers",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_totalSupply",
-				"type": "uint256"
-			}
-		],
-		"name": "setTotalSupply",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -661,7 +675,7 @@ dataManagerApiRoutes.post('/get/userTotalTransfers', function(req, res) {
 
 })
 
-dataManagerApiRoutes.post('/get/remainingSupply', function(req, res) {
+dataManagerApiRoutes.get('/get/remainingSupply', function(req, res) {
 
     dataManagerContract.getAvailableTotalSupply.call(function(err, result) {
         //console.log(result);
@@ -677,7 +691,23 @@ dataManagerApiRoutes.post('/get/remainingSupply', function(req, res) {
 
 })
 
-dataManagerApiRoutes.post('/get/totalTokensSold', function(req, res) {
+dataManagerApiRoutes.get('/get/lifetimeTotalSupply', function(req, res) {
+
+    dataManagerContract.getLifetimeTotalSupply.call(function(err, result) {
+        //console.log(result);
+        if (!err) {
+
+            //console.log(response);
+            res.json({
+                "lifetimeTotalSupply" : result
+            });
+        } else
+            res.status(401).json("Error" + err);
+    });
+
+})
+
+dataManagerApiRoutes.get('/get/totalTokensSold', function(req, res) {
 
     dataManagerContract.getTotalTokensSold.call(function(err, result) {
         //console.log(result);

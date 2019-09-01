@@ -797,6 +797,7 @@ contract BrazilPay{
     
     //function for decreasing total supply
     function decreaseTotalSupply(uint _amountToDecrease){
+        require(_amountToDecrease <= totalSupply);
         totalSupply = totalSupply - _amountToDecrease;
         constantTotalSupply = constantTotalSupply - _amountToDecrease;
     }
@@ -890,6 +891,11 @@ contract BrazilPay{
     //function for getting total sold tokens
     function getTotalTokensSold() returns(uint){
         return (constantTotalSupply - totalSupply);
+    }
+    
+    //function for getting lifetime total supply 
+    function getLifetimeTotalSupply() returns(uint){
+        return (constantTotalSupply);
     }
     
 }
